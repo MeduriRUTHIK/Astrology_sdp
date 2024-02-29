@@ -1,0 +1,121 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+ <style>
+    .two p {
+        font-size: 3vh;
+        width: 60vh;
+    }
+    .two {
+        text-align: center;
+        border: 2px solid black;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .two-inner {
+        border: 2px solid black;
+        color: rgb(151, 0, 3);
+        width: fit-content;
+        margin: auto;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 30px;
+        background-color: whitesmoke;
+    }
+    body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    form {
+        color: black;
+        margin-top: 20px;
+    }
+    marquee {
+        border: 2px solid black;
+        background-color: white;
+        font-size: larger;
+    }
+    input {
+        width: 180px;
+        height: 40px;
+    }
+.fa {
+  padding: 30px;
+  font-size: 60px;
+  width: 90px;
+  text-align: center;
+  text-decoration: none;
+  margin: 4px 1px;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+  }
+</style>
+</head>
+<body>
+<marquee style="color:black; font-size:24px"><strong>Get daily horoscope updates and astrological insights on our astrology website.</strong></marquee>
+<h1 align="center" style="color:white;font-size:48px">Contact Us</h1>
+<div class="two" style="font-size:22px">
+        <div class="two-inner">
+            <center>
+            <h3 style="font-size:22px">Astrology Consultancy Services</h3><br>
+            <p>Email: astrology@gmail.com</p>
+            <p>Contact No: +91 9854671235</p>
+            <a href="https://www.google.com/maps/place/Vijayawada,+Andhra+Pradesh/@16.5101487,80.5624819,12z/data=!3m1!4b1!4m6!3m5!1s0x3a35eff9482d944b:0x939b7e84ab4a0265!8m2!3d16.5061743!4d80.6480153!16zL20vMDM4NWs3?entry=ttu"><p>Location: vijayawada,Andhrapradesh</p></a>
+        </center>
+        </div>
+    </div>
+<div class="two" style="font-size:22px">
+        <div class="two-inner">
+        <h2>Contact Form</h2>
+        <form action="contact" method="post">
+            {% csrf_token %}
+            <label for="first_name">Enter your First Name:</label>&nbsp;&nbsp;&nbsp;
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" style="font-size:22px" required><br><br>
+            <label for="last_name">Enter your last Name:</label>&nbsp;&nbsp;&nbsp;
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" style="font-size:22px" required><br><br>
+            <label for="email">Enter your Email:</label>&nbsp;&nbsp;&nbsp;
+            <input type="email" id="email" name="email" placeholder="Enter your email" style="font-size:22px" required><br><br>
+            <label for="message">Message:</label>&nbsp;&nbsp;&nbsp;
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <button type="submit" class="button">Send Message</button>
+        </form>
+    </div>
+</div>
+<br><br>
+<center>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+<a href="https://twitter.com/" class="fa fa-twitter"></a>
+<a href="https://www.linkedin.com/in/karripavan" class="fa fa-linkedin"></a>
+<a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+    </center>
+<br><br><br>
+
+</body>
+</html>
+{% endblock %}

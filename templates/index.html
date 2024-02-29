@@ -1,0 +1,93 @@
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Astrology</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <style>
+    li{
+font-size:28px;
+font-weight: bold;
+}
+ marquee{
+     border: 2px solid black;
+     background-color: white;
+     font-size: larger;
+}
+.navbar li {
+        margin-right: 20px; /* Adjust the value as needed */
+    }
+
+  /* Define styles for zodiac signs */
+  .zodiac-sign {
+    width: 100px;
+    height: 100px;
+    background-color: gold;
+    border: 2px solid black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+    display: inline-block;
+    color: white; /* Add this line to set the font color to white */
+  }
+
+  /* Define individual styles for each zodiac sign */
+  #aries {
+    background-color: red;
+    color: white;
+  }
+
+  #taurus {
+    background-color: green;
+    color: white;
+  }
+
+  #gemini {
+    background-color: yellow;
+    color: white;
+  }
+
+  #cancer {
+    background-color: silver;
+    color: white;
+  }
+
+  /* Add more styles for other zodiac signs as needed */
+
+
+  </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'images/new1.jpg' %}');">
+<nav class="navbar" style = "background-color:#f7b602">
+    <div class="logo" style="color:white">Astrology</div>
+    <ul class="nav-links">
+      <div class="menu">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'aboutpage' %}">About</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+      </div>
+    </ul>
+  </nav>
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings =
+            {"appId":"368b0487784df3e7bb251c2e186e9be90","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+  <br><br>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

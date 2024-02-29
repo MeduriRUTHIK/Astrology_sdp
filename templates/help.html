@@ -1,0 +1,65 @@
+{% extends 'index2.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    .faq-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.faq-checkbox {
+    display: none;
+}
+
+.faq-question {
+    margin: 10px 0;
+    cursor: pointer;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+.answer {
+    padding: 10px;
+    display: none;
+    font-color:white;
+}
+
+.faq-checkbox:checked + .faq-question {
+    background-color: #e0e0e0;
+}
+
+.faq-checkbox:checked + .faq-question + .answer {
+    display: block;
+}
+
+  </style>
+</head>
+<body>
+<h2 align="center" style="color:white">Frequently Asked Questions(FAQ)</h2><br>
+    <div class="faq-container" align="justify">
+        <input type="checkbox" class="faq-checkbox" id="faq-1">
+        <label class="faq-question" for="faq-1">Question 1: What is astrology, and how does it work?</label>
+        <div class="answer" style="color:white">Answer 1: Answer: Astrology is the study of the positions and movements of celestial bodies, such as planets and stars, and their influence on human affairs and natural phenomena. It works by analyzing these celestial positions and their symbolism to provide insights into an individual's personality, life events, and potential future.</div><br><br>
+
+        <input type="checkbox" class="faq-checkbox" id="faq-2">
+        <label class="faq-question" for="faq-2">Question 2: How do I determine my zodiac sign?</label>
+        <div class="answer" style="color:white">Answer 2: Your zodiac sign is determined based on your birth date. There are 12 zodiac signs, and each corresponds to a specific date range. For example, Aries is from March 21 to April 19. You can find your zodiac sign by checking your birth date against these date ranges.</div><br><br>
+
+        <input type="checkbox" class="faq-checkbox" id="faq-3">
+        <label class="faq-question" for="faq-3">Question 3: Can astrology predict the future accurately?</label>
+        <div class="answer" style="color:white">Answer 3: Astrology provides insights into potential future events based on the positions of celestial bodies. While it can offer guidance and predictions, it's not a guarantee of specific outcomes. Astrology is more about understanding patterns and tendencies in one's life rather than precise predictions.</div><br><br>
+         <input type="checkbox" class="faq-checkbox" id="faq-4">
+        <label class="faq-question" for="faq-4">Question 4:What's the difference between Western and Vedic<br><br> astrology?</label>
+        <div class="answer" style="color:white">Answer 4: Western astrology and Vedic astrology are two different systems. Western astrology is based on the tropical zodiac and is widely used in the Western world. Vedic astrology, also known as Jyotish, is based on the sidereal zodiac and has its roots in ancient Indian traditions. Both systems offer unique insights and interpretations.</div><br><br>
+ <input type="checkbox" class="faq-checkbox" id="faq-5">
+        <label class="faq-question" for="faq-5">Question 5: How can I get a personalized horoscope reading?</label>
+        <div class="answer" style="color:white">Answer 5:You can get a personalized horoscope reading by providing your birth date, time, and place to a professional astrologer or using online astrology services. They will create a birth chart and interpret it to provide insights into your personality, life events, and future trends.</div><br><br>
+
+    </div>
+</body>
+</html>
+{% endblock %}

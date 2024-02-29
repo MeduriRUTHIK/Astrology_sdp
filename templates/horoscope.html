@@ -1,0 +1,143 @@
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Astrology</title>
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+  <style>
+
+marquee {
+      text-shadow: 0 0 15px white;
+      font-size: larger;
+      color: black; /* Set the font color to white */
+    }
+    .navbar li {
+        margin-right: 20px; /* Adjust the value as needed */
+    }
+    .navbar li {
+        margin-right: 20px; /* Adjust the value as needed */
+    }
+    li {
+      font-size: 28px;
+      font-weight: bold;
+      color: white; /* Set the font color to white */
+    }
+    /* Define styles for zodiac signs */
+    .zodiac-sign {
+      width: 100px;
+      height: 100px;
+      background-color: gold;
+      border: 2px solid black;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 100px;
+      font-weight: bold;
+      font-size: 20px;
+      margin: 10px;
+      display: inline-block;
+      color: white;
+    }
+    .button-content {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+    .sign-button {
+
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background-color 0.3s;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+    }
+     .sign-button img {
+      transition: transform 0.5s;
+    }
+     .sign-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .sign-button:hover img {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body id="bg" style="background-image:url('{% static 'images/new1.jpg' %}');">
+<nav class="navbar" style = "background-color:#f7b602">
+    <div class="logo">Astrology</div>
+    <ul class="nav-links">
+      <div class="menu">
+        <li><a href="{% url 'zodiac' %}"><strong>Zodiac Sign</strong></a></li>
+        <li><a href="{% url 'horoscopic'%}">Horoscope</a></li>
+        <li><a href="{% url 'feedback'%}">Feedback Form</a></li>
+        <li><a href="{% url 'changepassword'%}">Change Password</a></li>
+        <li><a href="{% url 'home' %}">Logout</a></li>
+      </div>
+    </ul>
+</nav>
+<br></br>
+<marquee style="color:black; font-size:24px"><strong>Get daily horoscope updates and astrological insights on our astrology website.</strong></marquee>
+<br><br>
+<h3 align="right" style="color:cyan;font-size:24px"><i>Welcome {{uname}}</i></h3>
+<p style="color:white">
+ <div class="container">
+    <h1 class="header" style="color:white">Discover Your Zodiac Sign:</h1><br>br>
+    <div class="sign-select">
+        <button class="sign-button" onclick="getHoroscope('Aries');scrollDown()"> <div class="button-content">
+            <img src="{% static 'images/aries.jpg' %}" width="200" height="200" >
+          </div>
+        </button>
+        <button class="sign-button" onclick="getHoroscope('Taurus'); scrollDown()"><img src="{% static 'images/bull.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Gemini');scrollDown()"><img src="{% static 'images/twins.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Cancer');scrollDown()"><img src="{% static 'images/cancer.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Leo');scrollDown()"><img src="{% static 'images/lion.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Virgo');scrollDown()"><img src="{% static 'images/virgin.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Libra');scrollDown()"><img src="{% static 'images/libra.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Scorpio');scrollDown()"><img src="{% static 'images/scorpion.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Sagittarius');scrollDown()"><img src="{% static 'images/arrow.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Capricorn');scrollDown()"><img src="{% static 'images/capricon.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Aquarius');scrollDown()"><img src="{% static 'images/aquarius.jpg' %}" width="200" height="200" > </button>
+        <button class="sign-button" onclick="getHoroscope('Pisces');scrollDown()"><img src="{% static 'images/fishes.jpg' %}" width="200" height="200" > </button>
+    </div><br><br>
+    <div id="horoscope-result" class="horoscope" align="justify" style="color: white; font-size:32px"></div> <!-- Set the font color to white -->
+</div>
+</p>
+<script>
+function scrollDown() {
+      const currentScroll = window.scrollY;
+      const targetScroll = currentScroll + window.innerHeight; // You can adjust this value as needed
+
+      window.scrollTo({
+        top: targetScroll,
+        behavior: 'smooth' // You can use 'auto' for instant scrolling
+      });
+    }
+var horoscopes = {
+    'Aries': 'Aries (21 March – 20 April / 15 April – 15 May)\nAries, the first sign of the zodiac, is associated with new beginnings. Governed by Mars, Aries individuals are characterized by their fiery spirit. Whether it\'s the tropical or sidereal dates, they are known for their pioneering attitude. Their audacity allows them to venture where others might hesitate.',
+    'Taurus': 'Taurus (20 April – 21 May / 16 May – 15 June)\nTaurus, ruled by the gentle Venus, is synonymous with steadfastness. Both tropical and sidereal Taureans display an innate craving for stability. They find solace in consistency, often resisting abrupt changes.',
+    'Gemini': 'Gemini (21 May – 21 June / 16 June – 15 July)\nGoverned by the swift Mercury, Geminis are the communicators of the zodiac. Their minds are always buzzing, jumping from one thought to another. Geminis, regardless of the date system, are characterized by their dual nature. This makes them adaptable and versatile.',
+    'Cancer': 'Cancer (21 June – 23 July / 16 July – 15 August)\nUnder the Moon\'s domain, Cancers are the nurturers of the zodiac. Their emotional depth is profound, often feeling things more intensely than other signs. Whether tropical or sidereal, their protective nature is evident, often shielding loved ones.',
+    'Leo': 'Leo (23 July – 23 August / 16 August – 15 September)\nGoverned by the radiant Sun, Leos are the royalty of the zodiac. Their charisma is undeniable, often drawing others to them effortlessly. Tropical or sidereal, Leos have a regal demeanor, holding their heads high with pride. They\'re born leaders, commanding attention wherever they go.',
+    'Virgo': 'Virgo (23 August – 23 September / 16 September – 15 October)\nUnder Mercury\'s influence, Virgos are the perfectionists of the zodiac. Detail-oriented, nothing escapes their critical eyes. Whether born under tropical or sidereal dates, they strive for excellence in every task. Their analytical minds dissect problems, often coming up with logical solutions.',
+    'Libra': 'Libra (23 September – 23 October / 16 October – 15 November)\nRuled by Venus, Libras are the diplomats of the zodiac. They seek harmony and balance in all things. Whether tropical or sidereal, their charm and tact make them excellent mediators. They have a keen sense of justice and fairness.',
+    'Scorpio': 'Scorpio (23 October – 22 November / 16 November – 15 December)\nGoverned by Mars and Pluto, Scorpios are the detectives of the zodiac. Their intensity and passion are unparalleled. Whether tropical or sidereal, they are known for their determination and resilience. They are not afraid to delve into the unknown.',
+    'Sagittarius': 'Sagittarius (22 November – 21 December / 16 December – 14 January)\nRuled by Jupiter, Sagittarians are the adventurers of the zodiac. They are always on a quest for knowledge. Whether tropical or sidereal, their optimism and enthusiasm are infectious. They are not afraid to take risks to achieve their goals.',
+    'Capricorn': 'Capricorn (22 December – 19 January / 15 January – 12 February)\nUnder Saturn\'s domain, Capricorns are the strategists of the zodiac. They are ambitious and disciplined. Whether tropical or sidereal, they are known for their practicality and reliability. They are not afraid to work hard to achieve their goals.',
+    'Aquarius': 'Aquarius (20 January – 18 February / 13 February – 14 March)\nRuled by Saturn and Uranus, Aquarians are the visionaries of the zodiac. They are forward-thinking and innovative. Whether tropical or sidereal, their eccentricity and individuality set them apart. They are not afraid to challenge the status quo.',
+    'Pisces': 'Pisces (19 February – 20 March / 15 March – 14 April)\nGoverned by Jupiter and Neptune, Pisceans are the dreamers of the zodiac. They are compassionate and empathetic. Whether tropical or sidereal, their intuition and imagination are their greatest assets. They are not afraid to dive into the realm of dreams and fantasies.'
+};
+
+function getHoroscope(sign) {
+    var resultDiv = document.getElementById('horoscope-result');
+    resultDiv.innerHTML = '<h2>' + sign + '</h2><p>' + horoscopes[sign] + '</p>';
+}
+</script>
+</body>
+</html>
