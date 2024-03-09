@@ -1,1 +1,98 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <style>
+   form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+label {
+    width: 150px;
+    text-align: right;
+    margin-right: 15px;
+    font-size: 24px;
+    color: white;
+}
+
+input, select {
+    flex: 1;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #008CBA;
+    border-radius: 5px;
+}
+ marquee{
+     border: 2px solid black;
+     background-color: white;
+     font-size: larger;
+}
+</style>
+</head>
+<body>
+<marquee style="color:black; font-size:24px"><strong>Get daily horoscope updates and astrological insights on our astrology website.</strong></marquee>
+<p align="center" style="color:red;font-size:28px"><strong>{{msg}}</strong></p>
+<p style="color:white">
+    <header>
+        <h1 style="color:white" align="center">Register for Astrology Services</h1>
+    </header>
+<br>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="username">Name:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+        </div>
+
+        <div class="form-row">
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" maxlength="10" required>
+    </div>
+
+        <div class="form-row">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" minlength="5" required>
+        </div>
+
+        <div class="form-row">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" minlength="5" required>
+        </div>
+
+        <div class="form-row">
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender" required>
+                <option value="select">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <input type="submit" value="Register" class="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset" class="button">
+        </div>
+    </form>
+<br>
+        <p align="center" style="color:white;font-size:28px;">Already have an account? <a style="color:white" href="{% url 'login' %}">Login here</a></p>
+<br><br>
+</body>
+</html>
+{% endblock %}
 
