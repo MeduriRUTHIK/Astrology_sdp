@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+  <br>
+  <html>
+  <head>
+    <title>Verify OTP</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <h2 align="center">Verify Your Email</h2>
+
+    <form action="{% url 'verify_otp' %}" method="post">
+      {% csrf_token %}
+      <label for="otp" style="font-size: 18px;">Enter the OTP sent to your email:</label>
+      <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+      <br><br>
+      <input type="submit" value="Verify OTP" class="button1">
+    </form>
+  </body>
+  </html>
+{% endblock %}

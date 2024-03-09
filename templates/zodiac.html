@@ -1,0 +1,26 @@
+{% extends 'index2.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Astrology</title>
+</head>
+<body>
+<br><br><br><br>
+<h1  style="color:#FFFFFF;font-size:48px">Your Zodiac Sign</h1><br><br>
+    <form method="post" action="{% url 'zodiac' %}">
+        {% csrf_token %}
+        <label for="month"  style="color:#FFFFFF; font-size: 32px;">Month of your birth:</label>
+        <input type="text" id="month" name="month" placeholder="e.g., January" style="font-size: 24px;width: 250px"><br><br>
+
+        <label for="day"  style="color:#FFFFFF; font-size: 32px;">Date of your birth:</label>
+<input type="number" id="day" name="day" placeholder="e.g., 10" style="font-size: 24px; width: 250px" min="1" max="31"><br><br>
+        <label for="place"  style="color:#FFFFFF; font-size: 32px;">Place of birth: </label>
+        <input type="text" id="place" name="place" placeholder="e.g. vijayawada" style="font-size: 24px; width: 250px;"><br><br>
+
+        <input type="submit" value="Submit" class="button">
+    </form><br><br>
+    <b><p  style="color:#FFFFFF;font-size: 48px;">You were born under the sign:{{ astro_sign }}</p></b>
+</body>
+</html>
+
+{% endblock %}
