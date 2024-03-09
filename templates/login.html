@@ -1,1 +1,57 @@
+{% extends 'index.html' %}
+{% block content %}
+<style>
+     marquee{
+     border: 2px solid black;
+     background-color: white;
+     font-size: larger;
+}
+</style>
+<marquee style="color:black; font-size:24px"><strong>Get daily horoscope updates and astrological insights on our astrology website.</strong></marquee>
+<br>
+<h2 align="center" style="color: red;font-size:28px">{{message}}</h2>
+<br>
+<h1 align="center" style="color:#FFFFFF; font-size: 48px;"><u>Login</u></h1><br>
 
+<center>
+<form method="post" action="{% url 'checklogin' %}">
+    {% csrf_token %}
+    <table align="center" width="40%" height="40%">
+        <tr>
+           <td>
+              <label style="color:#FFFFFF; font-size: 32px;">Enter Username</label>
+           </td>
+            <td>
+               <input type="text" name="uname" style="font-size: 24px;width: 250px" required/>
+            </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+
+        <tr>
+           <td>
+              <label style="color:#FFFFFF; font-size: 32px;">Enter Password</label>
+           </td>
+              <td>
+                <input type="password" name="pwd" style="font-size: 24px;width: 250px" required />
+              </td>
+        </tr>
+
+        <tr align="center">
+         <td>
+                <input type="Submit" value="login" class="button"/>
+         </td>
+            <td>
+                <input type="reset" value="clear" class="button"/>
+            </td>
+
+    </tr>
+    </table>
+    </p>
+    </form>
+    <p align="center" style="color:#FFFFFF; font-size: 32px;">Don't have an account? <a href="{% url 'register' %}" style="color:white">Register here</a></p>
+    </center>
+<br><br>
+
+{% endblock %}
