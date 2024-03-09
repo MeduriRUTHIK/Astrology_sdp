@@ -1,0 +1,72 @@
+{% load static %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Astrology</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <style>
+        marquee{
+     border: 2px solid black;
+     background-color: white;
+     font-size: larger;
+}
+li{
+font-size:28px;
+font-weight: bold;
+}
+.navbar li {
+        margin-right: 20px; /* Adjust the value as needed */
+    }
+    video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        z-index: -1;
+</style>
+
+</head>
+<body id="bg" style="background-image:url('{% static 'images/new1.jpg' %}');">
+<nav class="navbar" style = "background-color:#f7b602">
+    <div class="logo">Astrology</div>
+    <ul class="nav-links">
+      <div class="menu">
+   <body align="center">
+<li><a href="{% url 'zodiac' %}"><strong>Zodiac Sign</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li><a href="{% url 'horoscopic'%}">Horoscope</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li><a href="{% url 'feedback'%}">Feedback Form</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li><a href="{% url 'changepassword'%}">Change Password</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li><a href="{% url 'help'%}">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+<li><a href="{% url 'home' %}">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+   <script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings =
+            {"appId":"368b0487784df3e7bb251c2e186e9be90","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+   </body>
+      </div>
+    </ul>
+</nav>
+<br>
+<marquee style="color:black; font-size:24px"><strong>Get daily horoscope updates and astrological insights on our astrology website.</strong></marquee>
+<br><br>
+<h3 align="right" style="color:#f04b05;font-size:24px"><i><pre>Welcome {{uname}}   </pre></i></h3>
+<br>
+{% block content %}
+<br><br>
+<h1 style="align:center;font-size:48px;color:#FFFFFF;">Welcome to our website</h1>
+<video src="{% static 'resources/astrology_inside.mp4' %}" autoplay loop muted></video>
+{% endblock %}
+<br><br><br>
+</body>
+</html>
